@@ -1,13 +1,13 @@
 # Installation directories
 
 # Default prefix
-PREFIX ?= /usr
+PREFIX ?= "../lua-5.2.1/src"
 
 # Lua version and dirs
-LUA_SYS_VER ?= 5.2
-LUA_LIBDIR ?= $(PREFIX)/lib/lua/$(LUA_SYS_VER)
-LUA_DIR ?= $(PREFIX)/share/lua/$(LUA_SYS_VER)
-LUA_INC ?= $(PREFIX)/include/lua$(LUA_SYS_VER)
+LUA_SYS_VER ?= 5.2.1
+LUA_LIBDIR ?= $(PREFIX)
+LUA_DIR ?= $(PREFIX)
+LUA_INC ?= $(PREFIX)
 
 # OS dependent
 UNAME_S := $(shell uname -s)
@@ -19,10 +19,10 @@ endif
 
 # driver specific params
 # - MySQL
-#DRIVER_LIBS_mysql ?= -L/usr/local/mysql/lib -lmysqlclient -lz
+#DRIVER_LIBS_mysql ?= -L/usr/local/mysql/lib -llibmysql -lmysqlclient -lz -llua
 #DRIVER_INCS_mysql ?= -I/usr/local/mysql/include
-DRIVER_LIBS_mysql ?= -L/usr/lib -lmysqlclient -lz
-DRIVER_INCS_mysql ?= -I/usr/include/mysql
+DRIVER_LIBS_mysql ?= -L"../mysql-5.1.49/libmysql/Release" -llibmysql -lmysqlclient -lz -llua
+DRIVER_INCS_mysql ?= -I"../mysql-5.1.49/include"
 # - Oracle OCI8
 DRIVER_LIBS_oci8 ?= -L/home/oracle/OraHome1/lib -lz -lclntsh
 DRIVER_INCS_oci8 ?= -I/home/oracle/OraHome1/rdbms/demo \
