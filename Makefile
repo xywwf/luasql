@@ -17,10 +17,10 @@ all :
 	@echo "usage: make { $(subst $(SPACE),$(SPACE)|$(SPACE),$(DRIVER_LIST)) }"
 
 # explicity matches against the list of avilable driver names
-$(DRIVER_LIST) : % : src/%.so
+$(DRIVER_LIST) : % : src/%.dll
 
 # builds the specified driver
-src/%.so : src/ls_%.c $(OBJS) 
+src/%.dll : src/ls_%.c $(OBJS) 
 	$(CC) $(CFLAGS) src/ls_$*.c -o $@ $(LIB_OPTION) $(OBJS) $(DRIVER_INCS_$*) $(DRIVER_LIBS_$*)
 
 # builds the general LuaSQL functions
